@@ -1,0 +1,17 @@
+<h1>Profile Page: <%= @blogger.name %></h1>
+
+<h2>Total Likes: <%= @blogger.total_likes %></h2>
+
+ 
+<% if @blogger.posts.length > 0 %>
+    <h2>Featured Post: <%= link_to @blogger.featured_post.title, post_path(@blogger.featured_post) %></h2>
+<% end %>
+
+<% if @blogger.destinations.length > 0 %>
+    <h2>Top 5 Destinations:</h2>
+    <ul>    
+        <% @blogger.top_five.each do |destination| %>
+            <li><%= destination.name %></li>
+        <% end %>
+    </ul>
+<% end %>

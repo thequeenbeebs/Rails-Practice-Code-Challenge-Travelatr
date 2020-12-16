@@ -1,0 +1,16 @@
+<% if @post.errors.any? %>
+    <h2>Oops! There were some errors:</h2>
+    <ul>
+        <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @post do |f| %>
+    <p>Blogger: <%= f.collection_select :blogger_id, Blogger.all, :id, :name %></p>
+    <p>Destination: <%= f.collection_select :destination_id, Destination.all, :id, :name %></p>
+    <p>Title: <%= f.text_field :title %></p>
+    <p>Content: <%= f.text_area :content %></p>
+    <%= f.submit %>
+<% end %>
